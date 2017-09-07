@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     RecyclerView rvFlickerList;
     RecyclerView.LayoutManager layoutManager;
     RecyclerView.ItemAnimator itemAnimator;
+    MainActivityPresenter presenter;
 
 
     @Override
@@ -25,10 +26,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         setContentView(R.layout.activity_main);
 
 
-        MainActivityPresenter presenter = new MainActivityPresenter();
+        presenter = new MainActivityPresenter();
 
         rvFlickerList = (RecyclerView) findViewById(R.id.rvFlickerList);
-
         presenter.attachView(this);
         presenter.updateImageList();
     }
@@ -49,5 +49,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         rvFlickerList.setLayoutManager(layoutManager);
         rvFlickerList.setItemAnimator(itemAnimator);
         rvFlickerList.setAdapter(mainActivityAdapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.removeView();
     }
 }
