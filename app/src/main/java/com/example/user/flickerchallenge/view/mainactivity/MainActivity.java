@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         rvFlickerList = (RecyclerView) findViewById(R.id.rvFlickerList);
         presenter.attachView(this);
         presenter.updateImageList();
+        //sadfasdf
     }
 
 
