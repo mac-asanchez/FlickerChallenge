@@ -22,6 +22,7 @@ android:
 
 before_install:
   - echo yes | android update sdk --all --filter build-tools-26 --no-ui --force
+  - chmod +x gradlew
 
 script:
     - echo "Travis branch is $TRAVIS_BRANCH"
